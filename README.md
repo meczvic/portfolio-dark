@@ -26,7 +26,7 @@ O build está em `dist/`. Após a primeira instalação, use `npm ci` para insta
 
 - Home, Sobre, Projetos e Contato, em português.
 - Fundo azul quase preto, ciano suave, vidro discreto e composição sem decoração excessiva.
-- Inventário TI, Hughes Web e Automação EACE; descrições baseadas no portfólio público existente em 09/10/2026. Automação EACE usa a descrição de extração de helpdesk da referência, sem métricas ou resultados novos.
+- Inventário TI, Hughes Web e Automação EACE; descrições baseadas no portfólio público existente em 09/10/2026. Automação EACE usa a descrição de extração de helpdesk da referência; métricas existentes são preservadas sem resultados novos.
 - Nenhum dado fictício, dashboard simulado, depoimento ou taxa de resultado.
 - Contato por e-mail, LinkedIn e GitHub. Não existe formulário que simule envio.
 - Links dos projetos levam ao e-mail com assunto específico, pois o código é privado.
@@ -43,3 +43,11 @@ Edite `src/App.tsx` para conteúdo, contatos e projetos; `src/styles.css` para o
 4. Clique Deploy. Não configure o domínio do portfólio atual; mantenha o endereço `.vercel.app` gerado para comparação.
 
 Nenhuma variável de ambiente ou backend é necessário. Para preview via CLI autenticada: execute `npx vercel` nesta pasta, escolha criar um novo projeto e não vincule o projeto atual.
+
+## Conteúdo ampliado
+
+A nova versão preserva os seis projetos do portfólio de referência: Inventário TI, Hughes Web, Automação EACE (extração de dados), Bot de Consulta de Chamados, Adega ERP e Atlas. Resultados numéricos foram transpostos da referência, sem novas estimativas. Recursos planejados permanecem identificados como planejamento ou conceito.
+
+A seção Inventário TI apresenta coleta, evidências, QR, OCR, mapa, busca, exportação, conflitos, validação, segurança, agente Windows beta e estado do produto. Detalhes expansíveis mantêm a página organizada sem retirar conteúdo. As tecnologias de backend e automação também foram restauradas.
+
+Preview publicado: https://portfolio-dark-kohl.vercel.app/
