@@ -1,7 +1,159 @@
 const groups = [
- {title:'Coleta, organização e evidências',items:[['Formulário guiado','Identificação, rede, localização, usuário, acessórios, evidências e conferência final em 7 etapas.'],['Operação offline','Cadastros e fotos ficam na fila local via IndexedDB. A sincronização idempotente acontece quando a conexão retorna.'],['Estrutura e mapa','Empresa, unidade, localidade, prédio, andar, setor e sala/área, com equipamentos vinculados à hierarquia e progresso calculado pelos dados reais.'],['Busca e exportação','Busca por patrimônio, série, hostname, MAC, IP, usuário, fabricante, modelo e localização. CSV com 36 colunas, UTF-8 BOM, compatibilidade com Excel brasileiro e proteção contra injeção de fórmulas.'],['Evidências fotográficas','Compressão no próprio dispositivo antes do armazenamento ou sincronização para economizar banda e espaço.']]},
- {title:'Identificação, revisão e auditoria',items:[['QR Code por ativo','Geração, impressão e leitura. O QR contém apenas o identificador e exige login para abrir o equipamento.'],['OCR local','Tesseract.js sugere patrimônio, série, fabricante, modelo, P/N, MAC e IMEI, com revisão humana obrigatória.'],['Histórico e conflitos','Alterações registradas e comparação de edições simultâneas antes de aplicar mudanças.'],['Duplicidade e validação','Verificação de patrimônio, série e MAC, inclusive em itens pendentes offline. Validação formal com responsável e data registrados.'],['Pendências operacionais','Dashboard e indicadores apontam informações incompletas para apoiar revisão e auditoria.']]},
- {title:'Agente Windows · Beta',items:[['Coleta em modo somente leitura','O script PowerShell consulta dados técnicos, mostra um resumo, pede confirmação e grava um JSON local. Não envia dados para a internet.'],['Importação assistida','A importação ocorre no sistema autenticado, com correlação por série, patrimônio, MAC e hostname.'],['Decisão campo a campo','O agente sugere diferenças. O usuário aceita ou mantém cada informação; não há sobrescrita automática.']]},
- {title:'Segurança e estado do produto',items:[['Controle de acesso e evidências','RLS no banco para acesso autenticado e evidências fotográficas em bucket privado, vinculadas aos equipamentos.'],['Processamento local','O OCR não envia imagens a terceiros. O agente não carrega credenciais do sistema nem envia dados diretamente à nuvem.'],['Implementado','Offline-first, 36 campos, fotos, histórico, conflitos, estrutura, mapa, QR, OCR, busca, dashboard e importação do agente.'],['Em validação de uso real','Etiquetas reais, câmeras de diferentes celulares, PWA offline após primeiro uso e agente em máquinas Windows reais.'],['Próxima etapa — planejada','Productização comercial: perfis e permissões, multiempresa, onboarding, ambiente demo, relatórios executivos e preparação para clientes piloto.']]},
+  {
+    title: 'Coleta e operação offline',
+    items: [
+      [
+        'Formulário guiado',
+        'Identificação, rede, localização, usuário, acessórios, evidências e conferência final em 7 etapas, preservando o contrato de 36 campos do inventário.',
+      ],
+      [
+        'Operação offline',
+        'Cadastros e fotos ficam na fila local via IndexedDB. A sincronização idempotente acontece quando a conexão retorna.',
+      ],
+      [
+        'Busca e exportação',
+        'Busca por patrimônio, série, hostname, MAC, IP, usuário, fabricante, modelo e localização, com exportação CSV compatível com Excel brasileiro.',
+      ],
+      [
+        'Evidências fotográficas',
+        'Fotos são comprimidas no próprio dispositivo antes do armazenamento ou sincronização para reduzir consumo de banda e espaço.',
+      ],
+    ],
+  },
+  {
+    title: 'Identificação, estrutura e Digital Twin',
+    items: [
+      [
+        'QR Code e OCR local',
+        'Geração e leitura de QR por ativo, além de OCR local para sugerir patrimônio, série, fabricante, modelo, P/N, MAC e IMEI com revisão humana.',
+      ],
+      [
+        'Estrutura física',
+        'Empresa, unidade, localidade, prédio, andar, setor e sala/área formam a hierarquia operacional dos equipamentos.',
+      ],
+      [
+        'Digital Twin',
+        'Modelos GLB privados podem representar ambientes e ativos em 3D, com navegação operacional, seleção, busca e fallback procedural quando não há modelo disponível.',
+      ],
+      [
+        'Multiempresa e RBAC',
+        'Organizações e papéis isolam dados e ações por contexto, apoiados por políticas de acesso no banco e regras específicas para evidências e modelos.',
+      ],
+    ],
+  },
+  {
+    title: 'ITAM e CMDB',
+    items: [
+      [
+        'Ciclo de vida',
+        'O ativo ganha histórico de estados e eventos para acompanhar sua evolução desde entrada e uso até mudanças posteriores.',
+      ],
+      [
+        'Custódia e movimentações',
+        'Transferências, responsáveis e movimentações ficam registradas para manter rastreabilidade operacional.',
+      ],
+      [
+        'Garantias e contratos',
+        'Informações de garantia e contratos passam a compor o contexto do ativo e apoiar acompanhamento administrativo.',
+      ],
+      [
+        'Relações CMDB',
+        'Relações entre itens de configuração permitem representar dependências e contexto técnico entre ativos.',
+      ],
+      [
+        'Qualidade cadastral',
+        'Indicadores ajudam a identificar dados incompletos ou inconsistentes e orientar a revisão do inventário.',
+      ],
+    ],
+  },
+  {
+    title: 'Segurança e estado do produto',
+    items: [
+      [
+        'Controle de acesso e evidências',
+        'RLS no banco, buckets privados e isolamento por organização protegem os dados e as evidências associadas aos equipamentos.',
+      ],
+      [
+        'Processamento local',
+        'O OCR não envia imagens a terceiros e o agente de coleta trabalha em modo somente leitura antes da importação assistida.',
+      ],
+      [
+        'Agente Windows · Beta',
+        'Coleta dados técnicos localmente, mostra um resumo e gera JSON para importação autenticada, sem sobrescrever campos automaticamente.',
+      ],
+      [
+        'Implementado',
+        'Offline-first, 36 campos, fotos, histórico, conflitos, estrutura física, mapa, QR, OCR, busca, RBAC, multiempresa, Digital Twin, ITAM e CMDB.',
+      ],
+      [
+        'Próxima etapa — planejada',
+        'Homologação de uso real, refinamento de experiência, preparação de demonstração e evolução comercial sem perder o foco operacional.',
+      ],
+    ],
+  },
 ]
-export default function Inventory(){return <section id="inventario" className="container section inventory" aria-labelledby="inventory-title"><div className="projects-heading"><div><p className="eyebrow">PRODUTO EM DETALHE / INVENTÁRIO TI</p><h2 id="inventory-title">Inventário em campo.<br/>Rastreabilidade em cada etapa.</h2></div><a className="button primary" href="mailto:victor.hugofdantas@gmail.com?subject=Demonstra%C3%A7%C3%A3o%20do%20Invent%C3%A1rio%20TI">Solicitar demonstração</a></div><p className="inventory-intro">Uma plataforma para coletar, organizar, validar e rastrear equipamentos em smartphone ou notebook. Mantém dados locais quando a conexão cai e sincroniza quando ela volta. O MVP técnico avançado está em validação de uso real.</p><div className="product-proof"><div><strong>36</strong><span>campos do inventário</span></div><div><strong>7</strong><span>etapas de coleta</span></div><div><strong>68</strong><span>testes no conjunto principal</span></div><div><strong>Beta</strong><span>agente Windows</span></div></div><div className="inventory-details">{groups.map((group,index)=><details key={group.title} open={index===0}><summary>{group.title}</summary><div className="resource-grid">{group.items.map(([title,text])=><div key={title}><h3>{title}</h3><p>{text}</p></div>)}</div></details>)}</div></section>}
+
+export default function Inventory() {
+  return (
+    <section id="inventario" className="container section inventory" aria-labelledby="inventory-title">
+      <div className="projects-heading inventory-heading">
+        <div>
+          <p className="eyebrow">PRODUTO EM DETALHE / INVENTÁRIO TI</p>
+          <h2 id="inventory-title">
+            Do inventário em campo
+            <br />
+            ao ITAM e CMDB.
+          </h2>
+        </div>
+        <a
+          className="button primary"
+          href="mailto:victor.hugofdantas@gmail.com?subject=Demonstra%C3%A7%C3%A3o%20do%20Invent%C3%A1rio%20TI"
+        >
+          Solicitar demonstração
+        </a>
+      </div>
+
+      <p className="inventory-intro">
+        A plataforma começou como uma PWA para coleta e rastreabilidade de ativos e evoluiu para
+        uma base operacional com multiempresa, controle de acesso, Digital Twin e recursos de
+        ITAM/CMDB. O foco continua sendo uso real em smartphone ou notebook, inclusive com conexão
+        instável.
+      </p>
+
+      <div className="product-proof" aria-label="Resumo do produto">
+        <div>
+          <strong>36</strong>
+          <span>campos preservados</span>
+        </div>
+        <div>
+          <strong>7</strong>
+          <span>etapas de coleta</span>
+        </div>
+        <div>
+          <strong>3D</strong>
+          <span>Digital Twin com GLB privado</span>
+        </div>
+        <div>
+          <strong>P8</strong>
+          <span>ITAM e CMDB concluídos</span>
+        </div>
+      </div>
+
+      <div className="inventory-details">
+        {groups.map((group) => (
+          <details key={group.title}>
+            <summary>{group.title}</summary>
+            <div className="resource-grid">
+              {group.items.map(([title, text]) => (
+                <div key={title}>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+  )
+}
