@@ -1,6 +1,6 @@
 # Victor Hugo Dantas — Portfolio Dark
 
-Novo portfólio independente em React 19 + TypeScript + Vite. CSS responsivo próprio, equivalente moderno à abordagem com Tailwind, sem biblioteca de componentes adicional. Não modifica `meczvic/portfolio`.
+Novo portfólio independente em React 19 + TypeScript + Vite. A proposta visual é dark tecnológica e sóbria, com poucos elementos decorativos, ciano controlado, hierarquia forte e conteúdo técnico real. Este repositório não modifica `meczvic/portfolio`.
 
 ## Executar
 
@@ -20,34 +20,47 @@ npm run build
 npm run preview
 ```
 
-O build está em `dist/`. Após a primeira instalação, use `npm ci` para instalar exatamente as versões do lockfile.
+O build fica em `dist/`. Após a primeira instalação, use `npm ci` para instalar exatamente as versões do lockfile.
 
-## Conteúdo e design
+## Estrutura do portfólio
 
-- Home, Sobre, Projetos e Contato, em português.
-- Fundo azul quase preto, ciano suave, vidro discreto e composição sem decoração excessiva.
-- Inventário TI, Hughes Web e Automação EACE; descrições baseadas no portfólio público existente em 09/10/2026. Automação EACE usa a descrição de extração de helpdesk da referência; métricas existentes são preservadas sem resultados novos.
-- Nenhum dado fictício, dashboard simulado, depoimento ou taxa de resultado.
-- Contato por e-mail, LinkedIn e GitHub. Não existe formulário que simule envio.
-- Links dos projetos levam ao e-mail com assunto específico, pois o código é privado.
+- Home, Projetos, Inventário TI, Sobre e Contato.
+- Inventário TI, Hughes Web e Automação EACE ficam em destaque.
+- Bot de Consulta de Chamados, Adega ERP e Atlas permanecem disponíveis em uma seção compacta e recolhível.
+- Nenhum dado fictício, dashboard simulado, depoimento ou taxa de resultado inventada.
+- Contato por e-mail, LinkedIn e GitHub.
 - Menu acessível, foco visível, link para pular conteúdo e respeito a movimento reduzido.
-- Testes cobrem navegação, menu e destinos de contato.
 
-Edite `src/App.tsx` para conteúdo, contatos e projetos; `src/styles.css` para o visual. As fontes Google têm fallback local sans-serif.
+## Inventário TI
+
+A apresentação do produto acompanha a evolução real do repositório `meczvic/INVENTARIO-TI` e atualmente destaca:
+
+- coleta offline-first com contrato de 36 campos e formulário em 7 etapas;
+- QR Code, OCR local, histórico, conflitos e validação;
+- multiempresa e RBAC;
+- Digital Twin com modelos GLB privados e fallback procedural;
+- ciclo de vida, custódia e movimentações de ativos;
+- garantias e contratos;
+- relações CMDB e qualidade cadastral;
+- agente Windows em beta para coleta e importação assistida.
+
+Recursos futuros continuam identificados como planejamento ou conceito.
 
 ## Preview separado na Vercel
 
-1. Entre em https://vercel.com/new com sua conta.
-2. Importe **somente o novo repositório `portfolio-dark`**. Se ele não aparecer, autorize esse repositório na integração GitHub da Vercel.
-3. Use um **novo projeto** chamado `portfolio-dark`, preset Vite, comando `npm run build` e saída `dist` (já declarados em `vercel.json`).
-4. Clique Deploy. Não configure o domínio do portfólio atual; mantenha o endereço `.vercel.app` gerado para comparação.
+O preview independente continua configurado para um projeto Vercel separado do portfólio atual. Nenhuma variável de ambiente ou backend é necessária.
 
-Nenhuma variável de ambiente ou backend é necessário. Para preview via CLI autenticada: execute `npx vercel` nesta pasta, escolha criar um novo projeto e não vincule o projeto atual.
+Preview principal: https://portfolio-dark-kohl.vercel.app/
 
-## Conteúdo ampliado
+## CI
 
-A nova versão preserva os seis projetos do portfólio de referência: Inventário TI, Hughes Web, Automação EACE (extração de dados), Bot de Consulta de Chamados, Adega ERP e Atlas. Resultados numéricos foram transpostos da referência, sem novas estimativas. Recursos planejados permanecem identificados como planejamento ou conceito.
+O workflow `.github/workflows/ci.yml` executa em pull requests e na `main`:
 
-A seção Inventário TI apresenta coleta, evidências, QR, OCR, mapa, busca, exportação, conflitos, validação, segurança, agente Windows beta e estado do produto. Detalhes expansíveis mantêm a página organizada sem retirar conteúdo. As tecnologias de backend e automação também foram restauradas.
+```sh
+npm ci
+npm run lint
+npm test
+npm run build
+```
 
-Preview publicado: https://portfolio-dark-kohl.vercel.app/
+Isso mantém a versão publicada separada do portfólio atual até a decisão final sobre qual versão usar.
